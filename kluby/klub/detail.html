@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Detail klubu{% endblock %}
+
+<!-- Vložení externího CSS pro knihovnu Lightbox for Bootstrap -->
+{% block css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class="col-sm-12 bg-warning">
+        <h2 class="display-4 text-center">Podrobné informace</h2>
+    </div>
+</div>
+<div class="row mt-5 mb-3">
+    <div class="col-lg-6 mb-3">
+        <h2 class="display-4 mb-3">{{ klub_detail.name }}</h2>
+        <div class="bg-secondary text-light p-2 mb-3">Rok vzniku: {{ klub_detail.established.year }}, tituly: {{ klub_detail.domestic_champions }},
+            <b>{{ klub_detail.europe_ranking }}</b>
+        </div>
+        <div class="row">
+            <div class="col-md-9">{{ klub_detail.info }}</div>
+            <div class="col-md-3">
+                {% if klub_detail.poster %}
+                 <a href="{{ klub_detail.poster.url }}" data-toggle="lightbox" data-gallery="gallery">
+                    <img src="{{ klub_detail.poster.url }}" class="img-fluid" alt="Logo klubu">
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-sm-12 text-center">
+        <a href="{% url 'klub_delete' klub_detail.pk %}" class="btn btn-danger">Smazat</a>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Vložení externího JS pro knihovnu Lightbox for Bootstrap -->
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+<script>
+    $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+{% endblock %}

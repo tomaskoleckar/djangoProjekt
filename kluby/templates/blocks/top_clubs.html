@@ -1,0 +1,24 @@
+<div>
+    {% for klub in kluby %}
+        <div class="row mb-4 border-bottom">
+            <div class="col-md-4">
+                {% if klub.poster %}
+                    <img src="{{ klub.poster.url }}" alt="{{ klub.name }}"
+                         class="img-fluid">
+                    </a>
+                {% else %}
+                    <p>>Plakát k filmu není k dispozici</p>
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <h4><a href="{% url 'klub_detail' klub.pk %}">{{ film.name|upper }}</a></h4>
+                <p>{{ klub.info|truncatewords:30 }}</p>
+                <p>Domácí tituly: {{ klub.domestic_champions }},
+                    Založen: {{ klub.established|date:'Y' }}</p>
+                <p>Soutěže: {% for competition in klub.competitions.all %}
+                    <a href="#" class="btn btn-info">{{ competition.name }}</a>
+                {% endfor %}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
