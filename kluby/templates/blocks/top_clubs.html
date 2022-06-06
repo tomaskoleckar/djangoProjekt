@@ -16,7 +16,7 @@
                 <p>Domácí tituly: {{ klub.domestic_champions }},
                     Založen: {{ klub.established|date:'Y' }}</p>
                 <p>Soutěže: {% for competition in klub.competitions.all %}
-                    <a href="#" class="btn btn-info">{{ competition.name }}</a>
+                    <a href="{% url 'competition' competition.name %}" class="btn btn-info">{{ competition.name }}</a>
                 {% endfor %}</p>
             </div>
         </div>

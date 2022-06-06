@@ -17,17 +17,12 @@
             {% endif %}
             <div class="card-body">
                 <h4 class="card-title"><a href="{% url 'klub_detail' klub.pk %}">{{ klub.name }}</a></h4>
-                <p class="card-text">{% for genre in film.genres.all %}<a href="{% url 'film-genre' genre.name %}" class="btn btn-light">{{ genre.name }}</a> {% endfor %}</p>
+                <p class="card-text">{% for competition in klub.competitions.all %}<a href="{% url 'competition' competition.name %}" class="btn btn-light">{{ competition.name }}</a> {% endfor %}</p>
                 <!-- Odkaz ještě musí být doplněn o adresu stránky s detailem filmu -->
-                <a href="{% url 'film_detail' film.pk %}" class="btn btn-primary">Podrobnosti</a>
+                <a href="{% url 'klub_detail' klub.pk %}" class="btn btn-primary">Podrobnosti</a>
             </div>
         </div>
     </div>
     {% endfor %}
-</div>
-<div class="row mb-3">
-    <div class="col-sm-12 text-center">
-        <a href="{% url 'film_create' %}" class="btn btn-success">Nový film</a>
-    </div>
 </div>
 {% endblock %}

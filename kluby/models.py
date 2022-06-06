@@ -6,6 +6,8 @@ class Competition(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name='Competition name',
     help_text='Enter a club competition (e.g. Champions league, LaLiga)')
 
+    nation = models.CharField(blank=True, null=True,max_length=200, verbose_name='Nation')
+
     class Meta:
         ordering = ['name']
 
@@ -23,6 +25,13 @@ class Klub(models.Model):
     domestic_champions = models.IntegerField(blank=True, null=True,
                                   help_text='Please enter an integer value',
                                   verbose_name='League titles')
+    champions_league = models.IntegerField(blank=True, null=True,
+                                             help_text='Please enter an integer value',
+                                             verbose_name='Champions League')
+    stadium = models.CharField(blank=True, null=True,max_length=200, verbose_name='Stadium')
+    europa_league = models.IntegerField(blank=True, null=True,
+                                           help_text='Please enter an integer value',
+                                           verbose_name='Europa League')
     poster = models.ImageField(upload_to='klub/logo/%Y/%m/%d/', blank=True, null=True,
                                verbose_name="Logo")
     europe_rating = models.IntegerField(blank=True, null=True,
