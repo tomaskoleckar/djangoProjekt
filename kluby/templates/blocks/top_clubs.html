@@ -1,10 +1,10 @@
 <div>
     {% for klub in kluby %}
         <div class="row mb-4 border-bottom">
-            <div class="col-md-4">
+            <div class="col-md-4 test">
                 {% if klub.poster %}
                     <img src="{{ klub.poster.url }}" alt="{{ klub.name }}"
-                         class="img-fluid">
+                         class="img-fluid logo">
                     </a>
                 {% else %}
                     <p>>Plakát k filmu není k dispozici</p>

@@ -13,7 +13,7 @@
     <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <div class="card">
             {% if klub.poster %}
-                <img class="card-img-top" src="{{ klub.poster.url }}" alt="{{ klub.name }}">
+                <img class="card-img-top logo" src="{{ klub.poster.url }}" alt="{{ klub.name }}">
             {% endif %}
             <div class="card-body">
                 <h4 class="card-title"><a href="{% url 'klub_detail' klub.pk %}">{{ klub.name }}</a></h4>
